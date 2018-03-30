@@ -18,7 +18,7 @@ pipeline {
         environment name: 'CHANGE_TARGET', value: 'master'
       }
       steps {
-        node(label: 'docker') {
+        node(label: 'clair') {
           script {
             if ( env.CHANGE_BRANCH != "develop" &&  !( env.CHANGE_BRANCH.startsWith("hotfix")) ) {
                 error "Pipeline aborted due to PR not made from develop or hotfix branch"
