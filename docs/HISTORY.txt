@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.7 - (2018-04-02)
+---------------------
+* Change: Refs #89957 - Auto-complete history file [valentinab25]
+
 1.4
 ---------------------
 
