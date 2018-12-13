@@ -8,7 +8,17 @@ pipeline {
     }
 
   stages {
-
+    stage('SonarQube analysis') {
+      steps {
+        node {	    
+          // requires SonarQube Scanner 2.8+
+          def scannerHome = tool 'SonarQubeScanner';
+          withSonarQubeEnv('Sonarqube Dev') {
+            sh "${scannerHome}/bin/sonar-scanner"
+          }
+        }
+      }
+    }	    
 	 
     stage('Pull Request') {
       when {
