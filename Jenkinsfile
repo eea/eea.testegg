@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('SonarQube analysis') {
       steps {
-        node {	    
+        node(label: 'swarm'){	    
           // requires SonarQube Scanner 2.8+
           def scannerHome = tool 'SonarQubeScanner';
           withSonarQubeEnv('Sonarqube Dev') {
