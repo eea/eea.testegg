@@ -10,12 +10,14 @@ pipeline {
   stages {
     stage('SonarQube analysis') {
       steps {
-        node(label: 'swarm'){	    
+        node(label: 'swarm'){
+          script {
           // requires SonarQube Scanner 2.8+
           def scannerHome = tool 'SonarQubeScanner';
           withSonarQubeEnv('Sonarqube Dev') {
             sh "${scannerHome}/bin/sonar-scanner"
           }
+	  }
         }
       }
     }	    
