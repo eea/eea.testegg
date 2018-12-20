@@ -11,9 +11,9 @@ pipeline {
     stage('SonarQube analysis') {
       steps {
         node(label: 'swarm'){
-	              
-			  if (env.BRANCH_NAME == "develop" or env.BRANCH_NAME == "master") {   
-		           script{ 
+	          script{     
+			  if (env.BRANCH_NAME == "develop" || env.BRANCH_NAME == "master") {   
+		           
 		              checkout scm
                               // requires SonarQube Scanner 2.8+
                               def scannerHome = tool 'SonarQubeScanner';
