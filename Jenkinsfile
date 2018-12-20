@@ -11,13 +11,17 @@ pipeline {
     stage('SonarQube analysis') {
       steps {
         node(label: 'swarm'){
-          script {
-          // requires SonarQube Scanner 2.8+
-          def scannerHome = tool 'SonarQubeScanner';
-          withSonarQubeEnv('Sonarqube Dev') {
-            sh "${scannerHome}/bin/sonar-scanner"
-          }
-	  }
+	           script{    
+			  if (env.BRANCH_NAME == "develop" or env.BRANCH_NAME == "master") {                                          
+		              checkout scm
+                              // requires SonarQube Scanner 2.8+
+                              def scannerHome = tool 'SonarQubeScanner';
+                              withSonarQubeEnv('Sonarqube') {
+                                sh "${scannerHome}/bin/sonar-scanner -Dsonar.sources=eea/ -Dsonar.projectKey=$GIT_NAME-$BRANCH_NAME -Dsonar.projectVersion=$BUILD_TAG"
+                              }
+                          } 
+
+	           }
         }
       }
     }	    
