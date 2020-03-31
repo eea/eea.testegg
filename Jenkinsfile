@@ -26,7 +26,7 @@ echo  "Number is $number"
 name=$(echo $template | cut -d/ -f2)
 catalog="EEA:$name"
 rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog refresh | grep $catalog 
-rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID stack | grep $catalog
+rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID stack 
 rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog upgrade catalog://$catalog:$number --stack $stack_id '''
 
 
