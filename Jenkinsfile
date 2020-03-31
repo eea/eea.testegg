@@ -20,8 +20,9 @@ pipeline {
 cd eea.rancher.catalog/$template
 export number=$(find . -maxdepth 1 -type d | awk  'BEGIN{FS="/"}{print $2}' | sort -n | tail -n 1)
 cd ..
-rm -rf eea.rancher.catalog'''
-            sh '''echo  "Number is $number";./rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog refresh '''
+rm -rf eea.rancher.catalog
+echo  "Number is $number"
+rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog refresh '''
           }
         }
       }
