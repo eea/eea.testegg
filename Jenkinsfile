@@ -16,7 +16,8 @@ pipeline {
       steps {
         node(label: 'docker') {
           withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Rancher_dev_token', usernameVariable: 'RANCHER_ACCESS', passwordVariable: 'RANCHER_SECRET'],string(credentialsId: 'Rancher_dev_url', variable: 'RANCHER_URL'),string(credentialsId: 'Rancher_dev_envid', variable: 'RANCHER_ENVID')]) {
-            sh '''git clone https://github.com/eea/eea.rancher.catalog.git
+            sh '''rm -rf eea.rancher.catalog
+	    git clone https://github.com/eea/eea.rancher.catalog.git
 cd eea.rancher.catalog/$template
 export number=$(find . -maxdepth 1 -type d | awk  'BEGIN{FS="/"}{print $2}' | sort -n | tail -n 1)
 cd ..
