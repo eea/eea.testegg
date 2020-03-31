@@ -23,7 +23,9 @@ export number=$(find . -maxdepth 1 -type d | awk  'BEGIN{FS="/"}{print $2}' | so
 cd ..
 rm -rf eea.rancher.catalog
 echo  "Number is $number"
-rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog refresh '''
+name=$(echo $template | cut -d/ -f2)
+catalog="EEA:$name"
+rancher --url $RANCHER_URL --access-key $RANCHER_ACCESS --secret-key $RANCHER_SECRET --env $RANCHER_ENVID catalog refresh | grep $catalog '''
           }
         }
       }
