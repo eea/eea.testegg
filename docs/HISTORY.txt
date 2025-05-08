@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.5 - (2025-05-08)
+---------------------------
+* Change: fix setup.py [valentinab25]
+
 2.4 - (2025-05-08)
 ---------------------------
 * Change: test eggrepo [valentinab25]
