@@ -5,8 +5,10 @@ Changelog
 ---------------------------
 * Change: test eggrepo [valentinab25]
 
-2.3-dev0 - (unreleased)
+2.3 - (2025-05-08)
 ---------------------------
+* Change: test eggrepo
+  [valentinab25]
 
 2.2 - (2021-10-18)
 ---------------------------
