@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.7 - (2025-05-08)
+---------------------------
+* Change: Develop [valentinab25]
+
 2.5 - (2025-05-08)
 ---------------------------
 * Change: fix setup.py [valentinab25]
