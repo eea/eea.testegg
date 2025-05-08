@@ -14,7 +14,7 @@ long_description = "\n\n".join(
 )
 
 NAME = "eea.testegg"
-PATH = ["src"] + NAME.split(".") + ["version.txt"]
+PATH = NAME.split(".") + ["version.txt"]
 VERSION = open(join(*PATH)).read().strip()
 
 setup(
