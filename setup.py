@@ -46,9 +46,8 @@ setup(
         "Tracker": "https://github.com/eea/eea.testegg/issues",
     },
     license="GPL version 2",
-    packages=find_packages("src", exclude=["ez_setup"]),
-    namespace_packages=["eea"],
-    package_dir={"": "src"},
+    packages=find_packages(exclude=['ez_setup']),
+    namespace_packages=['eea'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
