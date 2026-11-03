@@ -25,3 +25,4 @@ jobs:
           smtp-port: ${{ secrets.SMTP_PORT || '25' }}
           smtp-email: ${{ secrets.SMTP_EMAIL }}
           smtp-password: ${{ secrets.SMTP_PASSWORD }}
+          fallback-email: ${{ vars.BETTERLEAKS_FALLBACK_EMAIL }}
