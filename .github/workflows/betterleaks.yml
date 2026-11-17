@@ -5,7 +5,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   scan:
@@ -26,6 +26,7 @@ jobs:
       - uses: eea/github-actions/betterleaks@v1
         with:
           timeout-minutes: 15
+          mention-author: "true"
           smtp-url: ${{ secrets.SMTP_URL }}
           smtp-port: ${{ secrets.SMTP_PORT || '25' }}
           smtp-email: ${{ secrets.SMTP_EMAIL }}
