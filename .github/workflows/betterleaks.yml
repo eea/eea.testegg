@@ -13,6 +13,7 @@ jobs:
     # push covers branches in this repo; pull_request is only needed for forks
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 20 # outer guard; the scan itself stops after timeout-minutes below
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -21,8 +22,10 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       # Shared EEA secret scan: https://github.com/eea/github-actions/tree/main/betterleaks
+      # Findings show as annotations on this check (file and line), with a job summary.
       - uses: eea/github-actions/betterleaks@v1
         with:
+          timeout-minutes: 15
           smtp-url: ${{ secrets.SMTP_URL }}
           smtp-port: ${{ secrets.SMTP_PORT || '25' }}
           smtp-email: ${{ secrets.SMTP_EMAIL }}
