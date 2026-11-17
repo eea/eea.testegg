@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: "0 3 * * 1" # Mondays 03:00 UTC
   workflow_dispatch:
+  push: # TEMPORARY(valentinab25): test the audit before it is on master; remove after the test
 
 permissions:
   contents: read
