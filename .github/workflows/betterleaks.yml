@@ -5,7 +5,7 @@ on:
   pull_request:
 
 permissions:
-  contents: write # mention-author writes a commit comment
+  contents: read
 
 jobs:
   scan:
@@ -23,10 +23,9 @@ jobs:
 
       # Shared EEA secret scan: https://github.com/eea/github-actions/tree/main/betterleaks
       # Findings show as annotations on this check (file and line), with a job summary.
-      - uses: eea/github-actions/betterleaks@a536ec5da71a3758de951b692260ba6c27afb53c # main, for mention-author test
+      - uses: eea/github-actions/betterleaks@v1
         with:
           timeout-minutes: 15
-          mention-author: "true"
           smtp-url: ${{ secrets.SMTP_URL }}
           smtp-port: ${{ secrets.SMTP_PORT || '25' }}
           smtp-email: ${{ secrets.SMTP_EMAIL }}
